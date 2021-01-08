@@ -1,4 +1,5 @@
 import {
+  BadGatewayException,
   Body,
   Controller,
   Delete,
@@ -37,6 +38,14 @@ export class CarsController {
   async deleteCar(@Param('id') id: string) {
     const car = await this.carsService.findCarById(id);
     if (car) return await this.carsService.deleteCar(id);
+    throw new NotFoundException();
+  }
+
+  @Get('/:url/convert')
+  async convertUrlToId(@Param('url') url) {
+    const car = await this.carsService.getCarByUrl(url);
+    if (car && car.id) return car.id;
+    if (car) throw new BadGatewayException();
     throw new NotFoundException();
   }
 }
