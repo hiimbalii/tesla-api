@@ -21,4 +21,7 @@ export class CarsService {
   async deleteCar(id: string) {
     return this.carModel.findByIdAndDelete(id);
   }
+  async findCarById(id: string) {
+    return this.carModel.findById(id);
+  }
 }
