@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDTO } from './dto/createCarDto';
 
@@ -8,12 +16,16 @@ export class CarsController {
 
   @Get()
   async getAllCars() {
-    return await this.carsService.getAllCars();
+    const cars = await this.carsService.getAllCars();
+    if (cars) return cars;
+    throw new NotFoundException();
   }
 
   @Get('/:url')
   async getCarByUrl(@Param('url') url: string) {
-    return await this.carsService.getCarByUrl(url);
+    const car = await this.carsService.getCarByUrl(url);
+    if (car) return car;
+    throw new NotFoundException();
   }
 
   @Post()
@@ -23,6 +35,8 @@ export class CarsController {
 
   @Delete('/:id')
   async deleteCar(@Param('id') id: string) {
-    return await this.carsService.deleteCar(id);
+    const car = await this.carsService.findCarById(id);
+    if (car) return await this.carsService.deleteCar(id);
+    throw new NotFoundException();
   }
 }
