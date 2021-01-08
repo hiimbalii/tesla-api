@@ -1,4 +1,4 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
 export class Form {
@@ -13,6 +13,9 @@ export class Form {
   @Prop()
   options: IOption[];
 }
+
+export type FormDocument = Form & Document;
+export const FormSchema = SchemaFactory.createForClass(Form);
 
 export interface IColor {
   name: string;
