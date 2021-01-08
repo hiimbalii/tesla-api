@@ -15,4 +15,10 @@ export class CarsService {
     const createdCar = new this.carModel(car);
     return createdCar.save();
   }
+  async getCarByUrl(url: string) {
+    return this.carModel.findOne({ url }).exec();
+  }
+  async deleteCar(id: string) {
+    return this.carModel.findByIdAndDelete(id);
+  }
 }
