@@ -19,9 +19,9 @@ export class CarsService {
     return this.carModel.findOne({ url }).exec();
   }
   async deleteCar(id: string) {
-    return this.carModel.findByIdAndDelete(id);
+    return this.carModel.findByIdAndDelete(id).exec();
   }
   async findCarById(id: string) {
-    return this.carModel.findById(id);
+    return this.carModel.findById(id).exec();
   }
 }
