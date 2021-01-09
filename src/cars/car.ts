@@ -13,6 +13,9 @@ export class Car {
   basePrice: number;
 
   @Prop({ required: true })
+  pictureUrl: string;
+
+  @Prop({ required: true })
   url: string;
 }
 

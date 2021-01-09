@@ -1,4 +1,26 @@
-import { Controller } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
+import { NewTeslaDTO } from './dto/newTeslaDto';
+import { TeslasService } from './teslas.service';
 
 @Controller('teslas')
-export class TeslasController {}
+export class TeslasController {
+  constructor(private teslaService: TeslasService) {}
+  @Get('/:id')
+  async getTesla(@Param('id') id: string) {
+    const tesla = await this.teslaService.getTesla(id);
+    if (tesla) return tesla;
+    throw new NotFoundException();
+  }
+
+  @Post()
+  async addTesla(@Body() newTeslaDto: NewTeslaDTO) {
+    return await this.teslaService.addNewTesla(newTeslaDto);
+  }
+}
