@@ -38,6 +38,22 @@ npm run start
 npm run start:dev
 ```
 
+Az alapértelmezett port a `3000`, ezt a [main.ts](main.ts)-ben módosítható.
+
+## API Használata
+
+Az automatikus dokumentáció a `/api` endpointon érhető el
+
+Például:
+
+```
+localhost:3000/api
+```
+
+### Konkrét ajánlások
+
+_todo_
+
 ## Megjegyzések
 
 Az alkalmazáshoz nem szükséges lokális mongodb, cloud solutionban van az egyszerűség kedvéért
