@@ -16,7 +16,9 @@ export class FormsController {
 
   @Get('/:url')
   async getFormForCar(@Param('url') url: string) {
-    return await this.formService.getFormForCar(url);
+    const form = await this.formService.getFormForCar(url);
+    if (form) return form;
+    throw new NotFoundException();
   }
 
   @Delete('/:id')
@@ -28,7 +30,6 @@ export class FormsController {
 
   @Post()
   async addNewForm(@Body() newFormDto: CreateFormDTO) {
-    console.log(newFormDto.options);
     return await this.formService.createFrom(newFormDto);
   }
 }
