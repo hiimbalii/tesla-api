@@ -1,6 +1,29 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
+export class KeyValuePair {
+  @Prop()
+  key: string;
+
+  @Prop()
+  value: string;
+}
+export class Color {
+  @Prop()
+  name: string;
+  @Prop()
+  hex: string;
+}
+export class Option {
+  @Prop()
+  name: string;
+  @Prop()
+  multipleChoices: boolean;
+
+  @Prop()
+  options: KeyValuePair;
+}
+
 @Schema()
 export class Form {
   @Prop({ required: true })
@@ -10,24 +33,10 @@ export class Form {
   @Prop({ required: true })
   autoUrl: string;
   @Prop()
-  colors: IColor[];
+  colors: Color[];
   @Prop()
-  options: IOption[];
+  options: Option[];
 }
 
 export type FormDocument = Form & Document;
 export const FormSchema = SchemaFactory.createForClass(Form);
-
-export interface IColor {
-  name: string;
-  hex: string;
-}
-export interface IOption {
-  name: string;
-  multipleChoices: boolean;
-  options: IKeyValuePair;
-}
-export interface IKeyValuePair {
-  key: string;
-  value: string;
-}

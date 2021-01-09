@@ -19,4 +19,7 @@ export class FormsService {
   async deleteForm(id: string) {
     return await this.formModel.findByIdAndDelete(id).exec();
   }
+  async getFormById(id: string) {
+    return await this.formModel.findById(id).exec();
+  }
 }
