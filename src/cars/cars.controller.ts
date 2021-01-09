@@ -29,6 +29,13 @@ export class CarsController {
     throw new NotFoundException();
   }
 
+  @Get('/id/:id')
+  async getCarById(@Param('id') id: string) {
+    const car = await this.carsService.findCarById(id);
+    if (car) return car;
+    throw new NotFoundException();
+  }
+
   @Post()
   async addNewCar(@Body() car: CreateCarDTO) {
     return await this.carsService.addNewCar(car);
