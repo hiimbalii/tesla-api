@@ -21,7 +21,7 @@ export class Option {
   multipleChoices: boolean;
 
   @Prop()
-  options: KeyValuePair;
+  options: KeyValuePair[];
 }
 
 @Schema()
