@@ -38,7 +38,7 @@ npm run start
 npm run start:dev
 ```
 
-Az alapértelmezett port a `3000`, ezt a [main.ts](main.ts)-ben módosítható.
+Az alapértelmezett port a `3000`, ezt a [main.ts](src/main.ts)-ben módosítható.
 
 ## API Használata
 
