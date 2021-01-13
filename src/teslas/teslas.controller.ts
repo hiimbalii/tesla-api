@@ -21,6 +21,8 @@ export class TeslasController {
 
   @Post()
   async addTesla(@Body() newTeslaDto: NewTeslaDTO) {
+    console.log(newTeslaDto.values);
+    console.log(newTeslaDto.values[0].value);
     return await this.teslaService.addNewTesla(newTeslaDto);
   }
 }

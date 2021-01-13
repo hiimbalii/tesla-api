@@ -4,6 +4,20 @@ import { Car } from 'src/cars/car';
 import { Color, KeyValuePair } from 'src/forms/form';
 import { Document } from 'mongoose';
 
+export class KeyValueHelper {
+  @Prop()
+  key: string;
+  @Prop()
+  value: string;
+}
+
+export class KeyValueExtra {
+  @Prop()
+  key: string;
+  @Prop()
+  value: KeyValueHelper;
+}
+
 @Schema()
 export class Tesla {
   @Prop()
